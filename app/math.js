@@ -33,9 +33,11 @@ var box1 = document.getElementById("box1");
 var box2 = document.getElementById("box2");
 var box3 = document.getElementById("box3");
 var box4 = document.getElementById("box4");
+var i = 0;
+
 var obj = [
-    {"question1": "7 + 5", "answer1": "12", "answer2": "18", "answer3": "10", "answer4": "21"},
-    // {question2: "9 + 22", answer1: "21", answer2: "43", answer3: "31", answer4: "19"},
+    {question: "7 + 5", answer1: "12", answer2: "18", answer3: "10", answer4: "21", correct: "12"},
+    {question: "9 + 22", answer1: "21", answer2: "43", answer3: "31", answer4: "19", correct: "31"},
     // {question3: "7 + 5", answer1: "12", answer2: "18", answer3: "10", answer4: "21"},
     // {question4: "7 + 5", answer1: "12", answer2: "18", answer3: "10", answer4: "21"},
     // {question5: "7 + 5", answer1: "12", answer2: "18", answer3: "10", answer4: "21"},
@@ -59,17 +61,26 @@ function reset(){
     for(var i = 0; i < choiceBoxes.length; i++){
         choiceBoxes.innerHTML = "";
     }
+    clearInterval(counter);
     questionBox.innerHTML = "";
     correctBox.style.display = "none";
     wrongBox.style.display = "none";
     scoreBox.innerHTML = "0";
+    box1.innerHTML = "";
+    box2.innerHTML = "";
+    box3.innerHTML = "";
+    box4.innerHTML = "";
     startResetButton.addEventListener("click", startGame);
 }
 
+
+
 function startGame (){
-    scoreBox.innerHTML = "0";
+    console.log("stargame running");
+    // scoreBox.innerHTML = "0";
     timeRemainBox.style.display = "block";
     startResetButton.innerHTML = "Reset Game";
+    startResetButton.addEventListener("click", reset);
     displayQuestion();
     countdown();
 }
@@ -81,19 +92,30 @@ function startGame (){
 //function gameOver()
 
 function displayQuestion () {
-    questionBox.innerHTML = obj.question1;
+   
     
+    questionBox.innerHTML = obj[i].question;
+    box1.innerHTML = obj[i].answer1;
+    box2.innerHTML = obj[i].answer2;
+    box3.innerHTML = obj[i].answer3;
+    box4.innerHTML = obj[i].answer4;
+    
+    i++;
 }
+
+function checkAns(){
+
+}
+
+    
+
 
 
 
 
 function countdown (){
 
-
-
-
-var count=5;
+var count=8;
 
 var counter=setInterval(timer, 1000); //1000 will  run it every 1 second
 
